@@ -5,13 +5,15 @@
 </head>
 <body>
   <script>
+  let playerScore = 0;
+  let computerScore = 0;
+
       function computerPlay() {
           let choices = ['Rock', 'Paper', 'Scissors'];
           let index = Math.floor(Math.random() * choices.length);
           return choices[index];
       }
-      let playerScore = 0;
-      let computerScore = 0;
+    
       function playRound(playerSelection, computerSelection) {
           let choices = ['ROCK', 'PAPER', 'SCISSORS'];
           playerSelection = playerSelection.toUpperCase();
