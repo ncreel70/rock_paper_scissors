@@ -10,27 +10,48 @@
           let index = Math.floor(Math.random() * choices.length);
           return choices[index];
       }
-
+      let playerScore = 0;
+      let computerScore = 0;
       function playRound(playerSelection, computerSelection) {
+          let choices = ['ROCK', 'PAPER', 'SCISSORS'];
           playerSelection = playerSelection.toUpperCase();
           computerSelection = computerPlay().toUpperCase();
-          if (playerSelection == computerSelection) {
-              console.log(playerSelection);
-              console.log(computerSelection);
-              console.log('Tie');
-          }
-          else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS' || 
-          playerSelection == 'SCISSORS' && computerSelection == 'PAPER' || playerSelection == 'PAPER' && computerSelection == 'ROCK') {
-              console.log(playerSelection);
-              console.log(computerSelection);
-              console.log('You Win!');
+          if (choices.indexOf(playerSelection) < 0) {
+              alert('Please enter: Rock, Paper, or Scissors. This round results in a Tie.')
           }
           else {
-              console.log(playerSelection);
-              console.log(computerSelection);
-              console.log('You Lose.');
+              if (playerSelection == computerSelection) {
+                  alert('Tie, you both played: ' + playerSelection);
+                  }
+                  else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS' || 
+                  playerSelection == 'SCISSORS' && computerSelection == 'PAPER' || playerSelection == 'PAPER' && computerSelection == 'ROCK') {
+                      playerScore++;
+                      alert('You Win! '+ playerSelection +' beats ' + computerSelection + '!');
+                      }
+                      else {
+                          computerScore++;
+                          alert('You Lose. ' + computerSelection + ' beats ' + playerSelection + '.');
+                          }
+                          return [playerScore, computerScore];
+                          }
+                          }
+
+      function playGame() {
+          let round = 0;
+          while (round < 5) {
+              round++;
+              playRound(prompt('Rock, Paper, Scissors?: ').toUpperCase(), computerPlay());
           }
-      }
+          if (playerScore > computerScore) {
+              alert("You Win!" + "\nYour Score: " + playerScore +"\nComputer Score: " + computerScore);
+              }
+              else if (computerScore > playerScore) {
+                  alert("You Lose!" + "\nYour Score: " + playerScore +"\nComputer Score: " + computerScore);
+                  }
+                  else {
+                      alert("You Tie!" + "\nYour Score: " + playerScore +"\nComputer Score: " + computerScore);
+                      }
+                      }
 
      
   </script>
